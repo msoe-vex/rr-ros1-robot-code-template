@@ -4,6 +4,7 @@ devel/
 install/
 src/v5_hal/firmware/include/ros_lib/*
 src/CMakeLists.txt
+.catkin_workspace
 
 # Compiled Object files
 *.o

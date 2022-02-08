@@ -2,7 +2,7 @@
 
 #include "nodes/NodeManager.h"
 #include "api.h"
-#include "nodes/subsystems/drivetrain_nodes/IDriveNode.h"
+#include "nodes/subsystems/IDriveNode.h"
 #include "nodes/actuator_nodes/MotorNode.h"
 #include "nodes/sensor_nodes/ControllerNode.h"
 #include "nodes/sensor_nodes/InertialSensorNode.h"

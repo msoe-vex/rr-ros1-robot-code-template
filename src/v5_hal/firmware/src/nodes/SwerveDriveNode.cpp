@@ -1,4 +1,4 @@
-#include "nodes/subsystems/drivetrain_nodes/SwerveDriveNode.h"
+#include "nodes/SwerveDriveNode.h"
 
 // By default, this constructor calls the constructor for the Node object in
 // NodeManager.h

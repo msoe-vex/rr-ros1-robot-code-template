@@ -1,4 +1,4 @@
-#include "nodes/subsystems/drivetrain_nodes/TankDriveNode.h"
+#include "nodes/TankDriveNode.h"
 
 TankDriveNode::TankDriveNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, 
     MotorNode* left_front_motor, MotorNode* left_rear_motor, MotorNode* right_front_motor, 

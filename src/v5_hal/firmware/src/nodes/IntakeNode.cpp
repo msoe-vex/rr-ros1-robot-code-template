@@ -1,4 +1,4 @@
-#include "nodes/subsystems/IntakeNode.h"
+#include "nodes/IntakeNode.h"
 
 IntakeNode::IntakeNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, 
         MotorNode* left_intake, MotorNode* right_intake, ADIDigitalOutNode* goal_plate, 
