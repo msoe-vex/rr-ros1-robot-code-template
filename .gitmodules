@@ -1,6 +1,3 @@
-[submodule ".github"]
-	path = .github
-	url = git@github.com:msoe-vex/rr-ros1-ci.git
 [submodule ".vscode"]
 	path = .vscode
 	url = git@github.com:msoe-vex/rr-vscode-build-scripts.git
