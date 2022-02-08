@@ -2,6 +2,10 @@
 
 NodeManager* node_manager;
 
+AutonManagerNode* auton_manager_node;
+
+// Declare all robot nodes here:
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -16,6 +20,9 @@ void initialize() {
 	Logger::giveNodeManager(node_manager);
 
 	// Initialize all robot nodes here:
+
+	// Initialize the autonomous manager
+	auton_manager_node = new AutonManagerNode(node_manager);
 
 	// Call the node manager to initialize all of the nodes above
 	node_manager->initialize();
@@ -61,7 +68,7 @@ void autonomous() {
 	node_manager->reset();
 
 	// Reset the chosen autonomous and initialize
-	//auton_manager_node->selected_auton->AutonInit();
+	auton_manager_node->selected_auton->AutonInit();
 	
 	// Execute autonomous code
 	while (pros::competition::is_autonomous()) {
