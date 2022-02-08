@@ -1,32 +1,28 @@
-# Prerequisites
-*.d
+# Catkin build files
+build/
+devel/
+install/
+src/v5_hal/firmware/include/ros_lib/*
+src/CMakeLists.txt
 
 # Compiled Object files
-*.slo
-*.lo
 *.o
 *.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
 # Executables
-*.exe
-*.out
-*.app
+*.bin
+*.elf
+
+# PROS
+bin/
+compile_commands.json
+temp.log
+temp.errors
+*.ini
+.d/
+
+# VSCode
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+.history/
