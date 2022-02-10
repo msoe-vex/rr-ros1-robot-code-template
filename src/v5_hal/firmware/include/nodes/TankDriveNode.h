@@ -1,9 +1,9 @@
 #pragma once
 
-#include "nodes/NodeManager.h"
+#include "lib-rr/nodes/NodeManager.h"
 #include "api.h"
-#include "nodes/actuator_nodes/MotorNode.h"
-#include "nodes/sensor_nodes/ControllerNode.h"
+#include "lib-rr/nodes/actuator_nodes/MotorNode.h"
+#include "lib-rr/nodes/sensor_nodes/ControllerNode.h"
 
 class TankDriveNode : public Node {
 private:

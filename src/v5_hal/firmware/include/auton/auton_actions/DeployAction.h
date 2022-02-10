@@ -1,8 +1,7 @@
 #pragma once
 
-#include "api.h"
-#include "auton/Auton.h"
-#include "util/Timer.h"
+#include "lib-rr/auton/Auton.h"
+#include "lib-rr/util/Timer.h"
 
 class DeployAction : public AutonAction {
 private:

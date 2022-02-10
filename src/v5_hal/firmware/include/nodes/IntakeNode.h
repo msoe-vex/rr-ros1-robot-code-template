@@ -1,11 +1,11 @@
 #pragma once
 
-#include "nodes/NodeManager.h"
+#include "lib-rr/nodes/NodeManager.h"
 #include "api.h"
-#include "nodes/actuator_nodes/MotorNode.h"
-#include "nodes/sensor_nodes/ControllerNode.h"
-#include "nodes/actuator_nodes/ADIDigitalOutNode.h"
-#include "util/Constants.h"
+#include "lib-rr/nodes/actuator_nodes/MotorNode.h"
+#include "lib-rr/nodes/sensor_nodes/ControllerNode.h"
+#include "lib-rr/nodes/actuator_nodes/ADIDigitalOutNode.h"
+#include "lib-rr/util/Constants.h"
 
 class IntakeNode : public Node {
 private:

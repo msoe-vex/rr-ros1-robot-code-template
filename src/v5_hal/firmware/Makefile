@@ -11,7 +11,6 @@ FWDIR:=$(ROOT)/firmware
 BINDIR=$(ROOT)/bin
 SRCDIR=$(ROOT)/src
 INCDIR=$(ROOT)/include
-EXTRA_INCDIR=$(ROOT)/include/lib-rr
 
 WARNFLAGS+=
 EXTRA_CFLAGS=
