@@ -1,11 +1,10 @@
 #pragma once
 
-#include "nodes/NodeManager.h"
-#include "auton/auton_routines/TestPathAuton.h"
-#include "auton/auton_routines/TestPoseAuton.h"
-#include "auton/auton_routines/TestTurnAuton.h"
-#include "pathing/PathManager.h"
-#include "api.h"
+#include "lib-rr/nodes/NodeManager.h"
+#include "lib-rr/auton/auton_routines/TestPathAuton.h"
+#include "lib-rr/auton/auton_routines/TestPoseAuton.h"
+#include "lib-rr/auton/auton_routines/TestTurnAuton.h"
+#include "lib-rr/pathing/PathManager.h"
 
 class AutonManagerNode : public Node {
 private:

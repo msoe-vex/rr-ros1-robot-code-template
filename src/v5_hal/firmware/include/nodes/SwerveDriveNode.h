@@ -1,13 +1,12 @@
 #pragma once
 
-#include "nodes/NodeManager.h"
-#include "eigen/Eigen/Dense"
-#include "math.h"
-#include "swerve/SwerveController.h"
-#include "nodes/actuator_nodes/MotorNode.h"
-#include "nodes/sensor_nodes/ADIAnalogInNode.h"
-#include "nodes/sensor_nodes/ControllerNode.h"
-#include "nodes/sensor_nodes/InertialSensorNode.h"
+#include "lib-rr/nodes/NodeManager.h"
+#include "lib-rr/eigen/Eigen/Dense"
+#include "lib-rr/swerve/SwerveController.h"
+#include "lib-rr/nodes/actuator_nodes/MotorNode.h"
+#include "lib-rr/nodes/sensor_nodes/ADIAnalogInNode.h"
+#include "lib-rr/nodes/sensor_nodes/ControllerNode.h"
+#include "lib-rr/nodes/sensor_nodes/InertialSensorNode.h"
 #include "ros_lib/v5_hal/RollPitchYaw.h"
 
 class DriverControlNode : public Node {

@@ -1,8 +1,8 @@
 #pragma once
 
 #include "api.h"
-#include "auton/Auton.h"
-#include "auton/AutonSequence.h"
+#include "lib-rr/auton/Auton.h"
+#include "lib-rr/auton/AutonSequence.h"
 
 /**
  * This function is used to generate a sequence to score balls in a goal.
