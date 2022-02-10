@@ -9,10 +9,9 @@ CXXEXTS:=cpp c++ cc
 ROOT=.
 FWDIR:=$(ROOT)/firmware
 BINDIR=$(ROOT)/bin
-SRCDIR=-I$(ROOT)/src -I$(ROOT)/lib/src
+SRCDIR=$(ROOT)/src
 INCDIR=$(ROOT)/include
-EXTRA_INCDIR=$(ROOT)/lib/include
-
+EXTRA_INCDIR=$(ROOT)/include/lib-rr
 
 WARNFLAGS+=
 EXTRA_CFLAGS=
