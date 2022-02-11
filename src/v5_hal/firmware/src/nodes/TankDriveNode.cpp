@@ -1,17 +1,23 @@
 #include "nodes/TankDriveNode.h"
 
 TankDriveNode::TankDriveNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, 
-    MotorNode* left_front_motor, MotorNode* left_rear_motor, MotorNode* right_front_motor, 
-    MotorNode* right_rear_motor) : Node(node_manager, 10), m_controller(controller->getController()), m_left_front_motor(left_front_motor), 
-    m_left_rear_motor(left_rear_motor), m_right_front_motor(right_front_motor), m_right_rear_motor(right_rear_motor) {
+        TankEightMotors motors, TankDriveKinematics kinematics) : IDriveNode(node_manager), 
+        m_controller(controller->getController()), 
+        m_motors(motors), 
+        m_kinematics(kinematics) {
+
     m_handle_name = handle_name.insert(0, "robot/");
 }
 
 void TankDriveNode::resetEncoders() {
-    m_left_front_motor->resetEncoder();
-    m_left_rear_motor->resetEncoder();
-    m_right_front_motor->resetEncoder();
-    m_right_rear_motor->resetEncoder();
+    m_motors.left_1_motor->resetEncoder();
+    m_motors.left_2_motor->resetEncoder();
+    m_motors.left_3_motor->resetEncoder();
+    m_motors.left_4_motor->resetEncoder();
+    m_motors.right_1_motor->resetEncoder();
+    m_motors.right_2_motor->resetEncoder();
+    m_motors.right_3_motor->resetEncoder();
+    m_motors.right_4_motor->resetEncoder();
 }
 
 void TankDriveNode::m_setLeftVoltage(int voltage) {
@@ -34,22 +40,22 @@ void TankDriveNode::m_setRightVelocity(float velocity) {
     m_right_rear_motor->moveVelocity(velocity);
 }
 
-void TankDriveNode::m_setLeftDistancePID(double distance, int max_velocity) {
+void TankDriveNode::m_setLeftDistancePosition(double distance, int max_velocity) {
     m_left_front_motor->moveAbsolute(distance, max_velocity);
     m_left_rear_motor->moveAbsolute(distance, max_velocity);
 }
 
-int TankDriveNode::getLeftDistancePID() {
+void TankDriveNode::m_setRightDistancePosition(double distance, int max_velocity) {
+    m_right_front_motor->moveAbsolute(distance, max_velocity);
+    m_right_rear_motor->moveAbsolute(distance, max_velocity);
+}
+
+int TankDriveNode::getLeftDistancePosition() {
     return m_left_front_motor->getPosition();
 }
 
-int TankDriveNode::getRightDistancePID() {
+int TankDriveNode::getRightDistancePosition() {
     return m_right_front_motor->getPosition();
-}
-
-void TankDriveNode::m_setRightDistancePID(double distance, int max_velocity) {
-    m_right_front_motor->moveAbsolute(distance, max_velocity);
-    m_right_rear_motor->moveAbsolute(distance, max_velocity);
 }
 
 void TankDriveNode::initialize() {

@@ -24,8 +24,8 @@ public:
         MotorNode* right_rear_motor_2;
     };
 
-    HolonomicDriveNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, InertialSensorNode* inerrtial_sensor,
-        HolonomicEightMotors motors, HolonomicDriveKinematics kinematics);
+    HolonomicDriveNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, 
+        InertialSensorNode* inertial_sensor, HolonomicEightMotors motors, HolonomicDriveKinematics kinematics);
 
     void initialize();
 
