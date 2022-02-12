@@ -23,19 +23,19 @@ public:
     TankDriveNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, 
         TankEightMotors motors, TankDriveKinematics kinematics);
 
-    virtual void initialize();
+    void initialize();
 
-    virtual void resetEncoders();
+    void resetEncoders();
 
-    virtual FourMotorDriveEncoderVals getIntegratedEncoderVals();
+    FourMotorDriveEncoderVals getIntegratedEncoderVals();
 
-    virtual void setDriveVoltage(int x_voltage, int theta_voltage);
+    void setDriveVoltage(int x_voltage, int theta_voltage);
 
-    virtual void setDriveVelocity(float x_velocity, float theta_velocity);
+    void setDriveVelocity(float x_velocity, float theta_velocity);
 
-    virtual void teleopPeriodic();
+    void teleopPeriodic();
 
-    virtual void autonPeriodic();
+    void autonPeriodic();
 
     ~TankDriveNode();
 
