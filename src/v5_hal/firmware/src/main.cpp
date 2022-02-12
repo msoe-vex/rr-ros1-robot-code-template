@@ -4,6 +4,10 @@ NodeManager* node_manager;
 
 AutonManagerNode* auton_manager_node;
 
+TankDriveNode* tank_drive_node;
+
+
+
 // Declare all robot nodes here:
 
 /**
