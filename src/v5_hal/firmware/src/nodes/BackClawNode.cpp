@@ -1,11 +1,11 @@
 #include "nodes/BackClawNode.h"
 
-BackClawNode::BackClawNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, ADIDIgitalOutNode* back_claw)
-: IClawNode(node_manager, handle_name), 
-m_controller(controller->getController()),
-m_back_claw(back_claw),
-{
-
+BackClawNode::BackClawNode(NodeManager* node_manager, std::string handle_name, 
+		ControllerNode* controller, ADIDigitalOutNode* back_claw) : 
+		IClawNode(node_manager, handle_name), 
+		m_controller(controller),
+		m_back_claw(back_claw) {
+	
 }
 
 void BackClawNode::initialize() {
@@ -21,8 +21,7 @@ void BackClawNode::useClaw(bool opened) {
 }
 
 void BackClawNode::teleopPeriodic() {
-	bool a_current_state = m_controller->get_digital(pros::E_CONTROLLER_DIGITAL_A);
-
+	bool a_current_state = m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_A);
 
 	if (a_current_state == 1 && a_previous_state == 0) {
 			back_claw_open = !back_claw_open;

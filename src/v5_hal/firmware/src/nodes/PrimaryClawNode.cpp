@@ -1,10 +1,10 @@
 #include "nodes/PrimaryClawNode.h"
 
-PrimaryClawNode::PrimaryClawNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, ADIDIgitalOutNode* primary_claw)
-: IClawNode(node_manager, handle_name), 
-m_controller(controller->getController()),
-m_primary_claw(primary_claw),
-{
+PrimaryClawNode::PrimaryClawNode(NodeManager* node_manager, std::string handle_name, 
+		ControllerNode* controller, ADIDigitalOutNode* primary_claw) : 
+		IClawNode(node_manager, handle_name), 
+		m_controller(controller),
+		m_primary_claw(primary_claw) {
 
 }
 
@@ -20,7 +20,7 @@ void PrimaryClawNode::useClaw(bool opened) {
 	}
 }
 void PrimaryClawNode::teleopPeriodic() {
-	bool l1_current_state = m_controller->get_digital(pros::E_CONTROLLER_DIGITAL_L1);
+	bool l1_current_state = m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_L1);
 
     if (l1_current_state == 1 && l1_previous_state == 0) {
 			front_claw_open = !front_claw_open;
