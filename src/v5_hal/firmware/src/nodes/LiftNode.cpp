@@ -1,17 +1,11 @@
 #include "nodes/LiftNode.h"
 
 LiftNode::LiftNode(NodeManager* node_manager, std::string handle_name, 
-        ControllerNode* controller, MotorNode* left_motor, 
-        MotorNode* right_motor, ADIDigitalInNode* bottom_limit_switch, 
-        ADIDigitalInNode* top_limit_switch, ADIAnalogInNode* potentiometer, 
+        ControllerNode* controller, MotorNode* motor,  
         pros::controller_digital_e_t up_button, pros::controller_digital_e_t down_button) : 
         ILiftNode(node_manager, handle_name), 
         m_controller(controller),
-        m_left_motor(left_motor),
-        m_right_motor(right_motor),
-        m_bottom_limit_switch(bottom_limit_switch),
-        m_top_limit_switch(top_limit_switch),
-        m_potentiometer(potentiometer),
+        m_motor(motor),
         m_up_button(up_button),
         m_down_button(down_button),
         m_lift_pid(0.03, 0., 0., 2) {
@@ -19,28 +13,15 @@ LiftNode::LiftNode(NodeManager* node_manager, std::string handle_name,
 }
 
 void LiftNode::initialize() {
-    m_left_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	m_right_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+    m_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 };
 
 void LiftNode::setLiftVoltage(int voltage) {
-    if (m_top_limit_switch->getValue() || m_bottom_limit_switch->getValue()) {
-        m_left_motor->moveVoltage(0);
-        m_right_motor->moveVoltage(0);
-    } else {
-        m_left_motor->moveVoltage(voltage);
-        m_right_motor->moveVoltage(voltage);
-    }
+    m_motor->moveVoltage(voltage);
 };
 
 void LiftNode::setLiftVelocity(int velocity) {
-    if (m_top_limit_switch->getValue() || m_bottom_limit_switch->getValue()) {
-        m_left_motor->moveVelocity(0);
-        m_right_motor->moveVelocity(0);
-    } else {
-        m_left_motor->moveVelocity(velocity);
-        m_right_motor->moveVelocity(velocity);
-    }
+    m_motor->moveVelocity(velocity);
 };
 
 void LiftNode::setLiftPosition(int position) {
@@ -51,21 +32,18 @@ void LiftNode::setLiftPosition(int position) {
 };
 
 int LiftNode::getPosition() {
-    return m_potentiometer->getValue();
+    return m_motor->getPosition();
 }
 
 void LiftNode::teleopPeriodic() {
     if (m_controller->getController()->get_digital(m_up_button) && 
             !m_controller->getController()->get_digital(m_down_button)) {
-        m_left_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
-        m_right_motor->moveVoltage(-1 * MAX_MOTOR_VOLTAGE);
+        m_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
     } else if (m_controller->getController()->get_digital(m_up_button) && 
             !m_controller->getController()->get_digital(m_down_button)) {
-        m_left_motor->moveVoltage(-1*MAX_MOTOR_VOLTAGE);
-        m_right_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
+        m_motor->moveVoltage(-MAX_MOTOR_VOLTAGE);
     } else {
-        m_left_motor->moveVoltage(0);
-		m_right_motor->moveVoltage(0);
+        m_motor->moveVoltage(0);
     }
 };
 
