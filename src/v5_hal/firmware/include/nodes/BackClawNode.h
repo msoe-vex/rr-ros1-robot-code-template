@@ -17,13 +17,13 @@ private:
 public:
     BackClawNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, ADIDigitalOutNode* back_claw);
 
-    virtual void initialize();
+    void initialize();
 
-    virtual void useClaw(bool opened);
+    void useClaw(bool opened);
 
-    virtual void teleopPeriodic();
+    void teleopPeriodic();
 
-    virtual void autonPeriodic();
+    void autonPeriodic();
 
-    virtual ~BackClawNode();
+    ~BackClawNode();
 };
