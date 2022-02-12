@@ -106,7 +106,7 @@ void initialize() {
 	back_claw = new BackClawNode(node_manager, "secondary_claw", controller, back_claw_piston);
 
 	// Initialize the autonomous manager
-	auton_manager_node = new AutonManagerNode(node_manager);
+	auton_manager_node = new AutonManagerNode(node_manager, tank_drive_node, primary_claw);
 
 	// Call the node manager to initialize all of the nodes above
 	node_manager->initialize();
@@ -155,9 +155,9 @@ void autonomous() {
 	auton_manager_node->selected_auton->AutonInit();
 	
 	// Execute autonomous code
-	while (pros::competition::is_autonomous()) {
-		node_manager->executeAuton();
-	}
+	//while (pros::competition::is_autonomous()) {
+	//	node_manager->executeAuton();
+	//}
 }
 
 /**
