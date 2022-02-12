@@ -4,9 +4,30 @@ NodeManager* node_manager;
 
 AutonManagerNode* auton_manager_node;
 
+ControllerNode* controller;
+
 TankDriveNode* tank_drive_node;
+MotorNode* left_1_motor;
+MotorNode* left_2_motor;
+MotorNode* left_3_motor;
+MotorNode* left_4_motor;
+MotorNode* right_1_motor;
+MotorNode* right_2_motor;
+MotorNode* right_3_motor;
+MotorNode* right_4_motor;
 
+PrimaryClawNode* primary_claw;
+ADIDigitalOutNode* primary_claw_piston;
 
+BackClawNode* back_claw;
+ADIDigitalOutNode* back_claw_piston;
+
+LiftNode* lift_node;
+MotorNode* m_left_motor_lift;
+MotorNode* m_right_motor_lift;
+ADIDigitalInNode* m_bottom_limit_switch_lift;
+ADIDigitalInNode* m_top_limit_switch_lift;
+ADIAnalogInNode* m_potentiometer_lift;
 
 // Declare all robot nodes here:
 
@@ -24,6 +45,14 @@ void initialize() {
 	Logger::giveNodeManager(node_manager);
 
 	// Initialize all robot nodes here:
+
+	// TODO Initialize TankDriveNode
+
+	// TODO Initialize LiftNode
+
+	// TODO Initialize PrimaryClawNode
+
+	// TODO Initialize BackClawNode
 
 	// Initialize the autonomous manager
 	auton_manager_node = new AutonManagerNode(node_manager);
