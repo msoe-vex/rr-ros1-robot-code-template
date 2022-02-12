@@ -16,7 +16,8 @@ LiftNode::LiftNode(NodeManager* node_manager, std::string handle_name,
 }
 
 void LiftNode::initialize() {
-
+    m_left_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	m_right_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 };
 
 void LiftNode::setLiftVoltage(int voltage) {
@@ -62,7 +63,7 @@ void LiftNode::teleopPeriodic() {
         }
     } else if (m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R1) && 
         !m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        if (m_bottom_limit_switch) {
+        if (m_bottom_limit_switch->getValue()) {
             m_left_motor->moveVoltage(0);
 		    m_right_motor->moveVoltage(0);
         } else {
