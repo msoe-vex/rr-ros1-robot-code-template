@@ -55,14 +55,14 @@ void initialize() {
 
 	controller = new ControllerNode(node_manager, "controller");
 
-	left_1_motor = new MotorNode(node_manager, 5,"left_1_motor", false);
-	left_2_motor = new MotorNode(node_manager, 17,"left_2_motor", true);
-	left_3_motor = new MotorNode(node_manager, 2,"left_3_motor", true);
+	left_1_motor = new MotorNode(node_manager, 1,"left_1_motor", false);
+	left_2_motor = new MotorNode(node_manager, 2,"left_2_motor", true);
+	left_3_motor = new MotorNode(node_manager, 3,"left_3_motor", true);
 	left_4_motor = new MotorNode(node_manager, 4,"left_4_motor", false);
-	right_1_motor = new MotorNode(node_manager, 1,"right_1_motor", true);
-	right_2_motor = new MotorNode(node_manager, 18,"right_2_motor", false);
-	right_3_motor = new MotorNode(node_manager, 16,"right_3_motor", false);
-	right_4_motor = new MotorNode(node_manager, 3,"right_4_motor", true);
+	right_1_motor = new MotorNode(node_manager, 5,"right_1_motor", true);
+	right_2_motor = new MotorNode(node_manager, 6,"right_2_motor", false);
+	right_3_motor = new MotorNode(node_manager, 7,"right_3_motor", false);
+	right_4_motor = new MotorNode(node_manager, 8,"right_4_motor", true);
 
 	TankDriveNode::TankEightMotors tank_motors = {
 		left_1_motor,
@@ -93,7 +93,7 @@ void initialize() {
 	);
 	
 	left_motor_lift = new MotorNode(node_manager, 8, "left_motor_lift", false);
-	right_motor_lift = new MotorNode(node_manager, 19, "right_motor_lift", true);
+	right_motor_lift = new MotorNode(node_manager, 15, "right_motor_lift", true);
 
 
 	left_lift_node = new LiftNode(node_manager, "left_lift_node", 
@@ -104,9 +104,9 @@ void initialize() {
         controller, right_motor_lift
 	);
 
-	right_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 1, false);
-	left_claw_piston = new ADIDigitalOutNode(node_manager, "secondary_claw_piston", 2, false);
-	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 3, false);
+	right_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 3, false);
+	left_claw_piston = new ADIDigitalOutNode(node_manager, "secondary_claw_piston", 1, false);
+	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 2, false);
 	pivot_claw_piston = new ADIDigitalOutNode(node_manager, "pivot_claw_piston", 4, false);
 
 	rightclaw = new ClawNode(node_manager, "primary_claw", controller, right_claw_piston);
