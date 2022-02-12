@@ -3,7 +3,8 @@
 LiftNode::LiftNode(NodeManager* node_manager, std::string handle_name, 
         ControllerNode* controller, MotorNode* left_motor, 
         MotorNode* right_motor, ADIDigitalInNode* bottom_limit_switch, 
-        ADIDigitalInNode* top_limit_switch, ADIAnalogInNode* potentiometer) : 
+        ADIDigitalInNode* top_limit_switch, ADIAnalogInNode* potentiometer, 
+        pros::controller_digital_e_t up_button, pros::controller_digital_e_t down_button) : 
         ILiftNode(node_manager, handle_name), 
         m_controller(controller),
         m_left_motor(left_motor),
@@ -11,6 +12,8 @@ LiftNode::LiftNode(NodeManager* node_manager, std::string handle_name,
         m_bottom_limit_switch(bottom_limit_switch),
         m_top_limit_switch(top_limit_switch),
         m_potentiometer(potentiometer),
+        m_up_button(up_button),
+        m_down_button(down_button),
         m_lift_pid(0.03, 0., 0., 2) {
 
 }
@@ -51,8 +54,8 @@ int LiftNode::getPosition() {
 }
 
 void LiftNode::teleopPeriodic() {
-    if (m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R1) && 
-        !m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    if (m_controller->getController()->get_digital(m_up_button) && 
+        !m_controller->getController()->get_digital(m_down_button)) {
         if(m_top_limit_switch->getValue()) {
             m_left_motor->moveVoltage(0);
 		    m_right_motor->moveVoltage(0);
@@ -60,8 +63,8 @@ void LiftNode::teleopPeriodic() {
             m_left_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
             m_right_motor->moveVoltage(-1 * MAX_MOTOR_VOLTAGE);
         }
-    } else if (m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R1) && 
-        !m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    } else if (m_controller->getController()->get_digital(m_up_button) && 
+        !m_controller->getController()->get_digital(m_down_button)) {
         if (m_bottom_limit_switch) {
             m_left_motor->moveVoltage(0);
 		    m_right_motor->moveVoltage(0);

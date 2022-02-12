@@ -17,6 +17,8 @@ private:
     ADIDigitalInNode* m_bottom_limit_switch;
     ADIDigitalInNode* m_top_limit_switch;
     ADIAnalogInNode* m_potentiometer;
+    pros::controller_digital_e_t m_up_button;
+    pros::controller_digital_e_t m_down_button;
 
     PID m_lift_pid;
 
@@ -24,7 +26,8 @@ public:
     LiftNode(NodeManager* node_manager, std::string handle_name, 
         ControllerNode* controller, MotorNode* left_motor, 
         MotorNode* right_motor, ADIDigitalInNode* bottom_limit_switch, 
-        ADIDigitalInNode* top_limit_switch, ADIAnalogInNode* potentiometer);
+        ADIDigitalInNode* top_limit_switch, ADIAnalogInNode* potentiometer, 
+        pros::controller_digital_e_t up_button, pros::controller_digital_e_t down_button);
     
     virtual void initialize();
 
