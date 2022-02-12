@@ -71,19 +71,7 @@ void LiftNode::teleopPeriodic() {
         m_left_motor->moveVoltage(0);
 		m_right_motor->moveVoltage(0);
     }
-    /*
-    if (m_bottom_limit_switch->getValue() && pros::E_CONTROLLER_DIGITAL_R1) && !pros::E_CONTROLLER_DIGITAL_R2) {
-        m_left_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
-        m_right_motor->moveVoltage(-1 * MAX_MOTOR_VOLTAGE);
-    } else if (m_bottom_limit_switch->getValue() && !pros::E_CONTROLLER_DIGITAL_R1) && pros::E_CONTROLLER_DIGITAL_R2){
-        m_left_motor->moveVoltage(0);
-		m_right_motor->moveVoltage(0);
-    } else if (m_top_limit_switch->getValue() && pros::E_CONTROLLER_DIGITAL_R1) && !pros::E_CONTROLLER_DIGITAL_R2) {
-        m_left_motor->moveVoltage(0);
-		m_right_motor->moveVoltage(0);
-    }
-    
-    /*
+
 };
 
 void LiftNode::autonPeriodic() {
