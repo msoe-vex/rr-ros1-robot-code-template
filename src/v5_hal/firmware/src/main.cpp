@@ -29,7 +29,7 @@ ClawNode* pivotclaw;
 ADIDigitalOutNode* pivot_claw_piston;
 
 
-LiftNode* lleft_ift_node;
+LiftNode* left_lift_node;
 MotorNode* left_motor_lift;
 
 LiftNode* right_lift_node;
@@ -97,11 +97,11 @@ void initialize() {
 
 
 	left_lift_node = new LiftNode(node_manager, "left_lift_node", 
-        controller, left_motor_lift, 
+        controller, left_motor_lift 
 	);
 
 	right_lift_node = new LiftNode(node_manager, "right_lift_node", 
-        controller, right_motor_lift, 
+        controller, right_motor_lift 
 	);
 
 	primary_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 1, false);
