@@ -44,22 +44,12 @@ int LiftNode::getPosition() {
 void LiftNode::teleopPeriodic() {
     if (m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R1) && 
         !m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        if(m_top_limit_switch->getValue()) {
-            m_left_motor->moveVoltage(0);
-		    m_right_motor->moveVoltage(0);
-        } else {
-            m_left_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
-            m_right_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
-        }
+        m_left_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
+        m_right_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
     } else if (m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R2) && 
         !m_controller->getController()->get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-        if (m_bottom_limit_switch->getValue()) {
-            m_left_motor->moveVoltage(0);
-		    m_right_motor->moveVoltage(0);
-        } else {
-            m_left_motor->moveVoltage(-MAX_MOTOR_VOLTAGE);
-            m_right_motor->moveVoltage(-MAX_MOTOR_VOLTAGE);
-        }
+        m_left_motor->moveVoltage(-MAX_MOTOR_VOLTAGE);
+        m_right_motor->moveVoltage(-MAX_MOTOR_VOLTAGE);
     } else {
         m_left_motor->moveVoltage(0);
 		m_right_motor->moveVoltage(0);

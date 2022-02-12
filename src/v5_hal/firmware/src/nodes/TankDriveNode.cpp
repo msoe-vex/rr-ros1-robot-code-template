@@ -88,8 +88,14 @@ void TankDriveNode::setDriveVelocity(float x_velocity, float theta_velocity) { /
 }
 
 void TankDriveNode::teleopPeriodic() {
-    m_setLeftVoltage(((m_controller->get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y)) / 127.0) * MAX_MOTOR_VOLTAGE);
-    m_setRightVoltage(((m_controller->get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y)) / 127.0) * MAX_MOTOR_VOLTAGE);
+    int left_y = m_controller->get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    int right_x = m_controller->get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+
+    int left = left_y + right_x;
+    int right = left_y - right_x;
+
+    m_setLeftVoltage(copysign(max(min(fabs(left) / 127.0, 127.0), 0.0) * MAX_MOTOR_VOLTAGE, left));
+    m_setRightVoltage(copysign(max(min(fabs(left) / 127.0, 127.0), 0.0) * MAX_MOTOR_VOLTAGE, right));
 }
 
 void TankDriveNode::autonPeriodic() {
