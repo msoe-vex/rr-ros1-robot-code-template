@@ -46,6 +46,9 @@ void initialize() {
 
 	// Initialize all robot nodes here:
 
+	// Initialize Controller Node
+	controller = new ControllerNode(node_manager, "controller");
+
 	// TODO Initialize TankDriveNode
 	left_1_motor = new MotorNode(node_manager, 5,"left_1_motor", false);
 	left_2_motor = new MotorNode(node_manager, 17,"left_2_motor", true);
@@ -90,14 +93,25 @@ void initialize() {
 	top_limit_switch_lift = new ADIDigitalInNode(node_manager, 6, "top_limit_switch_lift");
 	potentiometer_lift = new ADIAnalogInNode(node_manager, 8, "potentiometer_lift", false);
 
+	lift_node = LiftNode(node_manager, "lift_node", 
+        controller, left_motor_lift, 
+        right_motor_lift, bottom_limit_switch_lift, 
+		top_limit_switch_lift, potentiometer_lift);
+
 	// TODO Initialize PrimaryClawNode
 	primary_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 1, false);
+
+	primary_claw = new PrimaryClawNode(node_manager, "primary_claw", controller, primary_claw_piston);
 
 	// TODO Initialize BackClawNode
 	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 2, false);
 
+	back_claw = new SecondaryClawNode(node_manager, "secondary_claw", controller, back_claw_piston);
+
 	// Initialize the autonomous manager
 	auton_manager_node = new AutonManagerNode(node_manager);
+
+	
 
 	// Call the node manager to initialize all of the nodes above
 	node_manager->initialize();
