@@ -24,7 +24,7 @@ void ClawNode::useClaw(bool opened) {
 void ClawNode::teleopPeriodic() {
 	if(m_controller->getController()->get_digital(m_open_button) && !m_controller->getController()->get_digital(m_close_button)) {
 		m_claw->setValue(1);
-	}else if (m_controller->getController()->get_digital(m_open_button) && !m_controller->getController()->get_digital(m_close_button)) {
+	}else if (m_controller->getController()->get_digital(m_close_button) && !m_controller->getController()->get_digital(m_open_button)) {
 		m_claw->setValue(0);
 	}
 }

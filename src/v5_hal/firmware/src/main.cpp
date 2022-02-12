@@ -92,8 +92,8 @@ void initialize() {
         tank_motors, tank_kinematics
 	);
 	
-	left_motor_lift = new MotorNode(node_manager, 8, "left_motor_lift", false);
-	right_motor_lift = new MotorNode(node_manager, 15, "right_motor_lift", true);
+	left_motor_lift = new MotorNode(node_manager, 10, "left_motor_lift", true);
+	right_motor_lift = new MotorNode(node_manager, 15, "right_motor_lift", false);
 
 
 	left_lift_node = new LiftNode(node_manager, "left_lift_node", 
@@ -109,9 +109,9 @@ void initialize() {
 	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 2, false);
 	pivot_claw_piston = new ADIDigitalOutNode(node_manager, "pivot_claw_piston", 4, false);
 
-	rightclaw = new ClawNode(node_manager, "rightclaw", controller, right_claw_piston, pros::E_CONTROLLER_DIGITAL_A, pros::E_CONTROLLER_DIGITAL_X);
-	leftclaw = new ClawNode(node_manager, "leftclaw", controller, left_claw_piston, pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_UP);
-	backclaw = new ClawNode(node_manager, "back_claw", controller, back_claw_piston, pros::E_CONTROLLER_DIGITAL_RIGHT, pros::E_CONTROLLER_DIGITAL_DOWN);
+	rightclaw = new ClawNode(node_manager, "rightclaw", controller, right_claw_piston, pros::E_CONTROLLER_DIGITAL_X, pros::E_CONTROLLER_DIGITAL_A);
+	leftclaw = new ClawNode(node_manager, "leftclaw", controller, left_claw_piston, pros::E_CONTROLLER_DIGITAL_UP, pros::E_CONTROLLER_DIGITAL_LEFT);
+	backclaw = new ClawNode(node_manager, "back_claw", controller, back_claw_piston, pros::E_CONTROLLER_DIGITAL_DOWN, pros::E_CONTROLLER_DIGITAL_RIGHT);
 	pivotclaw = new ClawNode(node_manager, "pivot_claw", controller, pivot_claw_piston, pros::E_CONTROLLER_DIGITAL_B, pros::E_CONTROLLER_DIGITAL_Y);
 
 	// Initialize the autonomous manager

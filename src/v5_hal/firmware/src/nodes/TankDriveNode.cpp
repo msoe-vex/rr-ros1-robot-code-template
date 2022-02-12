@@ -66,8 +66,8 @@ TankDriveNode::FourMotorDriveEncoderVals TankDriveNode::getIntegratedEncoderVals
     FourMotorDriveEncoderVals encoder_vals = {
         m_motors.left_1_motor->getPosition(),
         m_motors.left_2_motor->getPosition(),
-        m_motors.left_3_motor->getPosition(),
-        m_motors.left_4_motor->getPosition()
+        m_motors.right_1_motor->getPosition(),
+        m_motors.right_2_motor->getPosition()
     };
 
     return encoder_vals;

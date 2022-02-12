@@ -39,8 +39,8 @@ void LiftNode::teleopPeriodic() {
     if (m_controller->getController()->get_digital(m_up_button) && 
             !m_controller->getController()->get_digital(m_down_button)) {
         m_motor->moveVoltage(MAX_MOTOR_VOLTAGE);
-    } else if (m_controller->getController()->get_digital(m_up_button) && 
-            !m_controller->getController()->get_digital(m_down_button)) {
+    } else if (m_controller->getController()->get_digital(m_down_button) && 
+            !m_controller->getController()->get_digital(m_up_button)) {
         m_motor->moveVoltage(-MAX_MOTOR_VOLTAGE);
     } else {
         m_motor->moveVoltage(0);
