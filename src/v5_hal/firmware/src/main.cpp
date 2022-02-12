@@ -97,11 +97,19 @@ void initialize() {
 
 
 	left_lift_node = new LiftNode(node_manager, "left_lift_node", 
+<<<<<<< HEAD
+        controller, left_motor_lift 
+	);
+
+	right_lift_node = new LiftNode(node_manager, "right_lift_node", 
+        controller, right_motor_lift 
+=======
         controller, left_motor_lift, pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_L2
 	);
 
 	right_lift_node = new LiftNode(node_manager, "right_lift_node", 
         controller, right_motor_lift, pros::E_CONTROLLER_DIGITAL_R1, pros::E_CONTROLLER_DIGITAL_R2
+>>>>>>> cb692573dc4b0e9e3b20b4b5e5e3d42aae788513
 	);
 
 	right_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 3, false);
