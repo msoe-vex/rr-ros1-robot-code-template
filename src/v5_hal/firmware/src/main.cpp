@@ -23,11 +23,11 @@ BackClawNode* back_claw;
 ADIDigitalOutNode* back_claw_piston;
 
 LiftNode* lift_node;
-MotorNode* m_left_motor_lift;
-MotorNode* m_right_motor_lift;
-ADIDigitalInNode* m_bottom_limit_switch_lift;
-ADIDigitalInNode* m_top_limit_switch_lift;
-ADIAnalogInNode* m_potentiometer_lift;
+MotorNode* left_motor_lift;
+MotorNode* right_motor_lift;
+ADIDigitalInNode* bottom_limit_switch_lift;
+ADIDigitalInNode* top_limit_switch_lift;
+ADIAnalogInNode* potentiometer_lift;
 
 // Declare all robot nodes here:
 
@@ -47,12 +47,27 @@ void initialize() {
 	// Initialize all robot nodes here:
 
 	// TODO Initialize TankDriveNode
+	left_1_motor = new MotorNode(node_manager, 5,"left_1_motor", false);
+	left_2_motor = new MotorNode(node_manager, 17,"left_2_motor", true);
+	left_3_motor = new MotorNode(node_manager, 2,"left_3_motor", true);
+	left_4_motor = new MotorNode(node_manager, 4,"left_4_motor", false);
+	right_1_motor = new MotorNode(node_manager, 1,"right_1_motor", true);
+	right_2_motor = new MotorNode(node_manager, 18,"right_2_motor", false);
+	right_3_motor = new MotorNode(node_manager, 16,"right_3_motor", false);
+	right_4_motor = new MotorNode(node_manager, 3,"right_4_motor", true);
 
 	// TODO Initialize LiftNode
+	left_motor_lift = new MotorNode(node_manager, 8, "left_motor_lift", false);
+	right_motor_lift = new MotorNode(node_manager, 19, "right_motor_lift", true);
+	bottom_limit_switch_lift = new ADIDigitalInNode(node_manager, 7, "bottom_limit_switch_lift");
+	top_limit_switch_lift = new ADIDigitalInNode(node_manager, 6, "top_limit_switch_lift");
+	potentiometer_lift = new ADIAnalogInNode(node_manager, 8, "potentiometer_lift", false);
 
 	// TODO Initialize PrimaryClawNode
+	primary_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_position", 1, false);
 
 	// TODO Initialize BackClawNode
+	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 2, false);
 
 	// Initialize the autonomous manager
 	auton_manager_node = new AutonManagerNode(node_manager);
