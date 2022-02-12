@@ -62,6 +62,17 @@ void TankDriveNode::resetEncoders() {
     m_motors.right_4_motor->resetEncoder();
 }
 
+TankDriveNode::FourMotorDriveEncoderVals TankDriveNode::getIntegratedEncoderVals() {
+    FourMotorDriveEncoderVals encoder_vals = {
+        m_motors.left_1_motor->getPosition(),
+        m_motors.left_2_motor->getPosition(),
+        m_motors.left_3_motor->getPosition(),
+        m_motors.left_4_motor->getPosition()
+    };
+
+    return encoder_vals;
+}
+
 void TankDriveNode::initialize() {
     resetEncoders();
 }
