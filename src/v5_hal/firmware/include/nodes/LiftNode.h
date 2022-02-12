@@ -29,19 +29,19 @@ public:
         ADIDigitalInNode* top_limit_switch, ADIAnalogInNode* potentiometer, 
         pros::controller_digital_e_t up_button, pros::controller_digital_e_t down_button);
     
-    virtual void initialize();
+    void initialize();
 
-    virtual void setLiftVoltage(int voltage);
+    void setLiftVoltage(int voltage);
 
-    virtual void setLiftVelocity(int velocity);
+    void setLiftVelocity(int velocity);
 
-    virtual void setLiftPosition(int position);
+    void setLiftPosition(int position);
 
-    virtual int getPosition();
+    int getPosition();
 
-    virtual void teleopPeriodic();
+    void teleopPeriodic();
 
-    virtual void autonPeriodic();
+    void autonPeriodic();
 
-    virtual ~LiftNode();
+    ~LiftNode();
 };

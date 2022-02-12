@@ -19,7 +19,8 @@ LiftNode::LiftNode(NodeManager* node_manager, std::string handle_name,
 }
 
 void LiftNode::initialize() {
-
+    m_left_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	m_right_motor->getMotor()->set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 };
 
 void LiftNode::setLiftVoltage(int voltage) {

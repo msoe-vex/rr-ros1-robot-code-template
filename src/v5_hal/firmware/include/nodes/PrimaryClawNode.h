@@ -16,13 +16,13 @@ private:
 public:
     PrimaryClawNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, ADIDigitalOutNode* primary_claw);
 
-    virtual void initialize();
+    void initialize();
 
-    virtual void useClaw(bool opened);
+    void useClaw(bool opened);
 
-    virtual void teleopPeriodic();
+    void teleopPeriodic();
 
-    virtual void autonPeriodic();
+    void autonPeriodic();
 
-    virtual ~PrimaryClawNode();
+    ~PrimaryClawNode();
 };
