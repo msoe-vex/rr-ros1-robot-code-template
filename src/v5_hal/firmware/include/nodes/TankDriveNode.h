@@ -31,11 +31,7 @@ public:
 
     virtual void setDriveVoltage(int x_voltage, int theta_voltage);
 
-    virtual void setDriveVoltage(int x_voltage, int y_voltage, int theta_voltage);
-
     virtual void setDriveVelocity(float x_velocity, float theta_velocity);
-
-    virtual void setDriveVelocity(float x_velocity, float y_velocity, float theta_velocity);
 
     virtual void teleopPeriodic();
 
@@ -52,4 +48,17 @@ private:
 
     TankDriveKinematics m_kinematics;
 
+    Eigen::Vector2d controller_target_velocity;
+
+    void m_setLeftPosition(float distance, int max_velocity);
+
+    void m_setRightPosition(float distance, int max_velocity);
+
+    void m_setLeftVoltage(int voltage);
+
+    void m_setRightVoltage(int voltage);
+
+    void m_setLeftVelocity(float velocity);
+
+    void m_setRightVelocity(float velocity);
 };

@@ -9,6 +9,48 @@ TankDriveNode::TankDriveNode(NodeManager* node_manager, std::string handle_name,
     m_handle_name = handle_name.insert(0, "robot/");
 }
 
+void TankDriveNode::m_setLeftPosition(float distance, int max_velocity) {
+    m_motors.left_1_motor->moveAbsolute(distance, max_velocity);
+    m_motors.left_2_motor->moveAbsolute(distance, max_velocity);
+    m_motors.left_3_motor->moveAbsolute(distance, max_velocity);
+    m_motors.left_4_motor->moveAbsolute(distance, max_velocity);
+}
+
+void TankDriveNode::m_setRightPosition(float distance, int max_velocity) {
+    m_motors.right_1_motor->moveAbsolute(distance, max_velocity);
+    m_motors.right_2_motor->moveAbsolute(distance, max_velocity);
+    m_motors.right_3_motor->moveAbsolute(distance, max_velocity);
+    m_motors.right_4_motor->moveAbsolute(distance, max_velocity);
+}
+
+void TankDriveNode::m_setLeftVoltage(int voltage) {
+    m_motors.left_1_motor->moveVoltage(voltage);
+    m_motors.left_2_motor->moveVoltage(voltage);
+    m_motors.left_3_motor->moveVoltage(voltage);
+    m_motors.left_4_motor->moveVoltage(voltage);
+}
+
+void TankDriveNode::m_setRightVoltage(int voltage) {
+    m_motors.right_1_motor->moveVoltage(voltage);
+    m_motors.right_2_motor->moveVoltage(voltage);
+    m_motors.right_3_motor->moveVoltage(voltage);
+    m_motors.right_4_motor->moveVoltage(voltage);
+}
+
+void TankDriveNode::m_setLeftVelocity(float velocity) {
+    m_motors.left_1_motor->moveVelocity(velocity);
+    m_motors.left_2_motor->moveVelocity(velocity);
+    m_motors.left_3_motor->moveVelocity(velocity);
+    m_motors.left_4_motor->moveVelocity(velocity);
+}
+
+void TankDriveNode::m_setRightVelocity(float velocity) {
+    m_motors.right_1_motor->moveVelocity(velocity);
+    m_motors.right_2_motor->moveVelocity(velocity);
+    m_motors.right_3_motor->moveVelocity(velocity);
+    m_motors.right_4_motor->moveVelocity(velocity);
+}
+
 void TankDriveNode::resetEncoders() {
     m_motors.left_1_motor->resetEncoder();
     m_motors.left_2_motor->resetEncoder();
@@ -20,62 +62,18 @@ void TankDriveNode::resetEncoders() {
     m_motors.right_4_motor->resetEncoder();
 }
 
-void TankDriveNode::m_setLeftVoltage(int voltage) {
-    m_left_front_motor->moveVoltage(voltage);
-    m_left_rear_motor->moveVoltage(voltage);
-}
-
-void TankDriveNode::m_setRightVoltage(int voltage) {
-    m_right_front_motor->moveVoltage(voltage);
-    m_right_rear_motor->moveVoltage(voltage);
-}
-
-void TankDriveNode::m_setLeftVelocity(float velocity) {
-    m_left_front_motor->moveVelocity(velocity);
-    m_left_rear_motor->moveVelocity(velocity);
-}
-
-void TankDriveNode::m_setRightVelocity(float velocity) {
-    m_right_front_motor->moveVelocity(velocity);
-    m_right_rear_motor->moveVelocity(velocity);
-}
-
-void TankDriveNode::m_setLeftDistancePosition(double distance, int max_velocity) {
-    m_left_front_motor->moveAbsolute(distance, max_velocity);
-    m_left_rear_motor->moveAbsolute(distance, max_velocity);
-}
-
-void TankDriveNode::m_setRightDistancePosition(double distance, int max_velocity) {
-    m_right_front_motor->moveAbsolute(distance, max_velocity);
-    m_right_rear_motor->moveAbsolute(distance, max_velocity);
-}
-
-int TankDriveNode::getLeftDistancePosition() {
-    return m_left_front_motor->getPosition();
-}
-
-int TankDriveNode::getRightDistancePosition() {
-    return m_right_front_motor->getPosition();
-}
-
 void TankDriveNode::initialize() {
     resetEncoders();
 }
 
-void TankDriveNode::setDriveVoltage(int left_voltage, int right_voltage) {
-    m_setLeftVoltage(left_voltage);
-    m_setRightVoltage(right_voltage);
+void TankDriveNode::setDriveVoltage(int x_voltage, int theta_voltage) {
+    IDriveKinematics::FourMotorPercentages motor_percentages = m_kinematics.inverseKinematics(x_voltage, 0, theta_voltage, MAX_MOTOR_VOLTAGE);
+
+    
 }
 
-void TankDriveNode::setDriveVelocity(float left_velocity, float right_velocity) { //incoming values should be in m/s so we convert to rpm here
-    m_setLeftVelocity(left_velocity / MAX_ROBOT_SPEED * 200);
-    m_setRightVelocity(right_velocity / MAX_ROBOT_SPEED * 200);
-}
-
-void TankDriveNode::setDriveDistancePID(double left_distance, double right_distance, int max_velocity) {
-    resetEncoders();
-    m_setLeftDistancePID(left_distance, max_velocity);
-    m_setRightDistancePID(right_distance, max_velocity);
+void TankDriveNode::setDriveVelocity(float x_velocity, float theta_velocity) { //incoming values should be in m/s so we convert to rpm here
+    // 
 }
 
 void TankDriveNode::teleopPeriodic() {
@@ -88,8 +86,5 @@ void TankDriveNode::autonPeriodic() {
 }
 
 TankDriveNode::~TankDriveNode() {
-    delete m_left_front_motor;
-    delete m_left_rear_motor;
-    delete m_right_front_motor;
-    delete m_right_rear_motor;
+    
 }
