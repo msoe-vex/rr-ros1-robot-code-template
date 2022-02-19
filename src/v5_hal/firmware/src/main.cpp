@@ -86,7 +86,7 @@ void initialize() {
 	);
 	
 	left_motor_lift = new MotorNode(node_manager, 8, "left_motor_lift", false);
-	right_motor_lift = new MotorNode(node_manager, 19, "right_motor_lift", true);
+	right_motor_lift = new MotorNode(node_manager, 9, "right_motor_lift", true);
 	bottom_limit_switch_lift = new ADIDigitalInNode(node_manager, 7, "bottom_limit_switch_lift");
 	top_limit_switch_lift = new ADIDigitalInNode(node_manager, 6, "top_limit_switch_lift");
 	potentiometer_lift = new ADIAnalogInNode(node_manager, 8, "potentiometer_lift", false);
