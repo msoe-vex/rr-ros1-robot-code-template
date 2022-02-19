@@ -155,9 +155,9 @@ void autonomous() {
 	auton_manager_node->selected_auton->AutonInit();
 	
 	// Execute autonomous code
-	//while (pros::competition::is_autonomous()) {
-	//	node_manager->executeAuton();
-	//}
+	while (pros::competition::is_autonomous()) {
+		node_manager->executeAuton();
+	}
 }
 
 /**

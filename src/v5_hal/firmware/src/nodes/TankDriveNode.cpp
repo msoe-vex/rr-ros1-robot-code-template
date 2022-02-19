@@ -84,7 +84,11 @@ void TankDriveNode::setDriveVoltage(int x_voltage, int theta_voltage) {
 }
 
 void TankDriveNode::setDriveVelocity(float x_velocity, float theta_velocity) { //incoming values should be in m/s so we convert to rpm here
-    // 
+    IDriveKinematics::FourMotorPercentages motor_percentages = 
+        m_kinematics.inverseKinematics(x_velocity, 0, theta_velocity, MAX_VELOCITY);
+
+    m_setLeftVelocity(motor_percentages.left_front_percent * MAX_VELOCITY);
+    m_setRightVelocity(motor_percentages.right_front_percent * MAX_VELOCITY);
 }
 
 void TankDriveNode::teleopPeriodic() {
