@@ -6,15 +6,17 @@
 #include "lib-rr/nodes/actuator_nodes/ADIDigitalOutNode.h"
 #include "pros/misc.h"
 
-class PrimaryClawNode : public IClawNode {
+class ClawNode : public IClawNode {
 private:
-    bool front_claw_open = false;
-    bool l1_previous_state = false;
-    ControllerNode* m_controller;
-    ADIDigitalOutNode* m_primary_claw;
+    bool claw_open = false;
+    bool a_previous_state = false;
     
+    ControllerNode* m_controller;
+    ADIDigitalOutNode* m_claw;
+
 public:
-    PrimaryClawNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller, ADIDigitalOutNode* primary_claw);
+    BackClawNode(NodeManager* node_manager, std::string handle_name, 
+    ControllerNode* controller, ADIDigitalOutNode* claw, pros::controller_digital_e_t button);
 
     void initialize();
 
@@ -24,5 +26,5 @@ public:
 
     void autonPeriodic();
 
-    ~PrimaryClawNode();
+    ~ClawNode();
 };
