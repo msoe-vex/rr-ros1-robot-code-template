@@ -1,12 +1,13 @@
 #include "nodes/ClawNode.h"
 
 ClawNode::ClawNode(NodeManager* node_manager, std::string handle_name, 
-		ControllerNode* controller, ADIDigitalOutNode* claw, pros::controller_digital_e_t open_button, pros::controller_digital_e_t close_button) : 
+		ControllerNode* controller, ADIDigitalOutNode* claw, pros::controller_digital_e_t button) : 
 		IClawNode(node_manager, handle_name), 
-		m_controller(controller),
+		m_controller(controller->getController()),
 		m_claw(claw),
-		m_open_button(open_button),
-		m_close_button(close_button) {
+		m_button(button),
+		m_claw_open(false),
+		m_a_previous_state(false){
 
 }
 
@@ -21,12 +22,17 @@ void ClawNode::useClaw(bool opened) {
         m_claw->setValue(1);
 	}
 }
+
 void ClawNode::teleopPeriodic() {
-	if(m_controller->getController()->get_digital(m_open_button) && !m_controller->getController()->get_digital(m_close_button)) {
-		m_claw->setValue(1);
-	}else if (m_controller->getController()->get_digital(m_close_button) && !m_controller->getController()->get_digital(m_open_button)) {
-		m_claw->setValue(0);
-	}
+	bool a_current_state = m_controller->getController()->get_digital(m_button);
+
+	if (a_current_state == 1 && m_a_previous_state == 0) {
+			m_claw_open = !m_claw_open;
+		}
+
+	m_a_previous_state = a_current_state;
+
+    useClaw(m_claw_open);
 }
 
 void ClawNode::autonPeriodic() {
