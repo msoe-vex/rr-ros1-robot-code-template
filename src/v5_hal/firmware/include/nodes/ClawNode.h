@@ -8,11 +8,10 @@
 
 class ClawNode : public IClawNode {
 private:
-    bool claw_open = false;
-    bool a_previous_state = false;
-    
     ControllerNode* m_controller;
     ADIDigitalOutNode* m_claw;
+    bool m_claw_open = false;
+    bool m_a_previous_state = false;
 
 public:
     BackClawNode(NodeManager* node_manager, std::string handle_name, 
