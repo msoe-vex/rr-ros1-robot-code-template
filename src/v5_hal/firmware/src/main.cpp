@@ -99,11 +99,11 @@ void initialize() {
 
 	primary_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 1, false);
 
-	primary_claw = new ClawNode(node_manager, "primary_claw", controller, primary_claw_piston, pros::);
+	primary_claw = new ClawNode(node_manager, "primary_claw", controller, primary_claw_piston, pros::E_CONTROLLER_DIGITAL_R1);
 
 	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 2, false);
 
-	back_claw = new ClawNode(node_manager, "secondary_claw", controller, back_claw_piston), ;
+	back_claw = new ClawNode(node_manager, "secondary_claw", controller, back_claw_piston, pros::E_CONTROLLER_DIGITAL_R2);
 
 	// Initialize the autonomous manager
 	auton_manager_node = new AutonManagerNode(node_manager, tank_drive_node, primary_claw);
