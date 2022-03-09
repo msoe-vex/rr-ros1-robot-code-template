@@ -98,8 +98,7 @@ void HolonomicDriveNode::setDriveVoltage(int x_voltage, int theta_voltage) {
 }
 
 void HolonomicDriveNode::setDriveVoltage(int x_voltage, int y_voltage, int theta_voltage) {
-    IDriveKinematics::FourMotorPercentages motor_percentages = 
-        m_kinematics.inverseKinematics(x_voltage, y_voltage, theta_voltage, MAX_MOTOR_VOLTAGE);
+    IDriveKinematics::FourMotorPercentages motor_percentages = m_kinematics.inverseKinematics(x_voltage, y_voltage, theta_voltage, MAX_MOTOR_VOLTAGE);
 
     m_setLeftFrontVoltage(motor_percentages.left_front_percent * MAX_MOTOR_VOLTAGE);
     m_setLeftRearVoltage(motor_percentages.left_rear_percent * MAX_MOTOR_VOLTAGE);
@@ -109,7 +108,7 @@ void HolonomicDriveNode::setDriveVoltage(int x_voltage, int y_voltage, int theta
 
 void HolonomicDriveNode::setDriveVoltage(int left_x, int left_y, int right_x, int right_y) {
     IDriveKinematics::FourMotorPercentages motor_percentages = 
-        m_kinematics.tankKinematics(0, left_y, 0, right_y, MAX_MOTOR_VOLTAGE);
+        m_kinematics.simpleKinematics(0, left_y, 0, right_y, MAX_MOTOR_VOLTAGE);
 
     m_setLeftFrontVoltage(motor_percentages.left_front_percent * MAX_MOTOR_VOLTAGE);
     m_setLeftRearVoltage(motor_percentages.left_rear_percent * MAX_MOTOR_VOLTAGE);
