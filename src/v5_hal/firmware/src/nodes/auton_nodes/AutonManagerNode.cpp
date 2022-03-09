@@ -5,7 +5,7 @@ AutonManagerNode::AutonManagerNode(NodeManager* node_manager, IDriveNode* drive_
         m_drive_node(drive_node),
         m_claw_node(claw_node) {
     m_basic_auton = new BasicAuton(m_drive_node, m_claw_node);
-    //selected_auton = m_basic_auton;
+    selected_auton = m_basic_auton;
 }
 
 void AutonManagerNode::initialize() {
