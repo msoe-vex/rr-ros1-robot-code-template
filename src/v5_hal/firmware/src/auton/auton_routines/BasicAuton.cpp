@@ -12,10 +12,9 @@ void BasicAuton::AddNodes() {
     Auton::AddFirstNode(m_forward_node);
     
 
-    //m_claw_close_node = new AutonNode(10, new UseClawAction(m_claw_node, false));
-    //Auton::AddFirstNode(m_claw_close_node);
-    //m_forward_node->AddNext(m_claw_close_node);
+    m_claw_close_node = new AutonNode(10, new UseClawAction(m_claw_node, false));
+    m_forward_node->AddNext(m_claw_close_node);
 
-    //m_backward_node = new AutonNode(10, new DriveStraightAction(m_drive_node, 800, 10000, 10000));
-    //m_claw_close_node->AddNext(m_claw_close_node);
+    m_backward_node = new AutonNode(10, new DriveStraightAction(m_drive_node, 800, 10000, 10000));
+    m_claw_close_node->AddNext(m_backward_node);
 }
