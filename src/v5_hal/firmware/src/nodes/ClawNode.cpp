@@ -3,7 +3,7 @@
 ClawNode::ClawNode(NodeManager* node_manager, std::string handle_name, 
 		ControllerNode* controller, ADIDigitalOutNode* claw, pros::controller_digital_e_t button) : 
 		IClawNode(node_manager, handle_name), 
-		m_controller(controller->getController()),
+		m_controller(controller),
 		m_claw(claw),
 		m_button(button),
 		m_claw_open(false),
@@ -24,7 +24,7 @@ void ClawNode::useClaw(bool opened) {
 }
 
 void ClawNode::teleopPeriodic() {
-	bool a_current_state = m_controller->get_digital(m_button);
+	bool a_current_state = m_controller->getController()->get_digital(m_button);
 
 	if (a_current_state == 1 && m_a_previous_state == 0) {
 			m_claw_open = !m_claw_open;
