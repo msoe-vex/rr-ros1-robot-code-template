@@ -8,17 +8,16 @@
 
 class ClawNode : public IClawNode {
 private:
-    bool claw_open = false;
-    bool m_button_previous_state = false;
     ControllerNode* m_controller;
     ADIDigitalOutNode* m_claw;
-    pros::controller_digital_e_t m_open_button;
-    pros::controller_digital_e_t m_close_button;
+    pros::controller_digital_e_t m_button;
+    bool m_claw_open;
+    bool m_a_previous_state;
 
     
 public:
     ClawNode(NodeManager* node_manager, std::string handle_name, ControllerNode* controller,
-    ADIDigitalOutNode* claw, pros::controller_digital_e_t open_button, pros::controller_digital_e_t close_button) ;
+    ADIDigitalOutNode* claw, pros::controller_digital_e_t button) ;
 
     void initialize();
 

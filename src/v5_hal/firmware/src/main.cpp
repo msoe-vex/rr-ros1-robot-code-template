@@ -97,19 +97,11 @@ void initialize() {
 
 
 	left_lift_node = new LiftNode(node_manager, "left_lift_node", 
-<<<<<<< HEAD
-        controller, left_motor_lift 
-	);
-
-	right_lift_node = new LiftNode(node_manager, "right_lift_node", 
-        controller, right_motor_lift 
-=======
         controller, left_motor_lift, pros::E_CONTROLLER_DIGITAL_L1, pros::E_CONTROLLER_DIGITAL_L2
 	);
 
 	right_lift_node = new LiftNode(node_manager, "right_lift_node", 
         controller, right_motor_lift, pros::E_CONTROLLER_DIGITAL_R1, pros::E_CONTROLLER_DIGITAL_R2
->>>>>>> cb692573dc4b0e9e3b20b4b5e5e3d42aae788513
 	);
 
 	right_claw_piston = new ADIDigitalOutNode(node_manager, "primary_claw_piston", 3, false);
@@ -117,10 +109,10 @@ void initialize() {
 	back_claw_piston = new ADIDigitalOutNode(node_manager, "back_claw_piston", 2, false);
 	pivot_claw_piston = new ADIDigitalOutNode(node_manager, "pivot_claw_piston", 4, false);
 
-	rightclaw = new ClawNode(node_manager, "rightclaw", controller, right_claw_piston, pros::E_CONTROLLER_DIGITAL_X, pros::E_CONTROLLER_DIGITAL_A);
-	leftclaw = new ClawNode(node_manager, "leftclaw", controller, left_claw_piston, pros::E_CONTROLLER_DIGITAL_UP, pros::E_CONTROLLER_DIGITAL_LEFT);
-	backclaw = new ClawNode(node_manager, "back_claw", controller, back_claw_piston, pros::E_CONTROLLER_DIGITAL_DOWN, pros::E_CONTROLLER_DIGITAL_RIGHT);
-	pivotclaw = new ClawNode(node_manager, "pivot_claw", controller, pivot_claw_piston, pros::E_CONTROLLER_DIGITAL_B, pros::E_CONTROLLER_DIGITAL_Y);
+	rightclaw = new ClawNode(node_manager, "rightclaw", controller, right_claw_piston, pros::E_CONTROLLER_DIGITAL_X);
+	leftclaw = new ClawNode(node_manager, "leftclaw", controller, left_claw_piston, pros::E_CONTROLLER_DIGITAL_UP);
+	backclaw = new ClawNode(node_manager, "back_claw", controller, back_claw_piston, pros::E_CONTROLLER_DIGITAL_DOWN);
+	pivotclaw = new ClawNode(node_manager, "pivot_claw", controller, pivot_claw_piston, pros::E_CONTROLLER_DIGITAL_B);
 
 	// Initialize the autonomous manager
 	auton_manager_node = new AutonManagerNode(node_manager, tank_drive_node, primary_claw);
