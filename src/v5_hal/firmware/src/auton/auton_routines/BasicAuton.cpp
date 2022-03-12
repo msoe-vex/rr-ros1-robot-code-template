@@ -8,7 +8,7 @@ BasicAuton::BasicAuton(IDriveNode* drive_node, IClawNode* claw_node) :
 }
 
 void BasicAuton::AddNodes() {
-    m_forward_node = new AutonNode(10, new DriveStraightAction(m_drive_node, 24, 10000, 10000));
+    m_forward_node = new AutonNode(10, new DriveStraightAction(m_drive_node, 30, 50, 10));
     Auton::AddFirstNode(m_forward_node);
     
 
